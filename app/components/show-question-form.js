@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   actions: {
-    submit(params){
-      this.attrs.submit(params);
+    submit(question){
+      this.attrs.submit(question);
     }
   }
 });

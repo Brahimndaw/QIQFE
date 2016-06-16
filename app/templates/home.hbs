@@ -1,7 +1,7 @@
 {{show-question question=model}}
 
 {{#if isAnswering}}
-  {{show-question-form submit=(action 'submit')}}
+  {{show-question-form submit=(action 'submit') question=model}}
 {{else}}
   {{show-answers answers=model.answers}}
 {{/if}}

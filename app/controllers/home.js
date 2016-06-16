@@ -5,12 +5,11 @@ export default Ember.Controller.extend({
     return true;
   },
   actions: {
-    submit(params){
-      debugger
-      this.store.get('answer').createRecord('answer', {
-        content: "spock"
-      });
-      this.get('model').save();
+    submit(newAnswer){
+      this.get('model').get('answers').addObject(this.store.createRecord('answer', {
+          content: newAnswer
+      }));
+
       this.set('isAnswering', false);
     }
   }
