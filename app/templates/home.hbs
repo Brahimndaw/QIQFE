@@ -1,5 +1,9 @@
-{{#each model as |question|}}
-  <h1>{{question.content}}</h1>
-{{/each}}
+{{show-question question=model}}
+
+{{#if isAnswering}}
+  {{show-question-form submit=(action 'submit')}}
+{{else}}
+  {{show-answers answers=model.answers}}
+{{/if}}
 
 {{outlet}}
