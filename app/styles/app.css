@@ -1,0 +1,20 @@
+.triangle-right {
+	width: 0;
+	height: 0;
+	border-top: 50px solid transparent;
+	border-left: 75px solid #3399ff;
+	border-bottom: 50px solid transparent;
+}
+
+.content-box{
+  background: rgba(0,0,0,0.5);
+  color: white;
+}
+
+.container{
+  margin-top: 10%;
+}
+
+.answer-form{
+  color: black;
+}

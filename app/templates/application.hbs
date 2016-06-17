@@ -1,13 +1,37 @@
-<button {{action 'getQuestion'}}>Get question</button>
+<div class="container">
 
-{{currentQ.data.attributes.content}}
+  {{#if currentQ }}
+    <div class="row">
+      <div class="col-lg-8 content-box">
+        <h1 class="question">{{question}}</h1>
+      </div>
+      <div class="col-lg-4">
+        <div class="triangle-right" {{action 'getQuestion'}}>
+        </div>
+      </div>
+    </div>
 
-{{#if isAnswering}}
-  {{show-question-form submit=(action 'submit')}}
-{{else}}
-  {{#each answers as |answer|}}
-    <p>{{answer.attributes.content}}</p>
-  {{/each}}
-{{/if}}
+    <div class="col-lg-6">
+      {{#if isAnswering}}
+          {{show-question-form submit=(action 'submit')}}
+      {{else}}
+        <div id="usersAnswer" class="content-box">
+          {{userAnswer}}
+        </div>
+      {{/if}}
+    </div>
 
-{{outlet}}
+      {{#unless isAnswering}}
+        <div class="col-lg-6 content-box">
+        {{#each answers as |answer|}}
+          <p>{{answer.content}}</p>
+        {{/each}}
+        </div>
+      {{/unless}}
+
+    {{outlet}}
+
+  {{else}}
+    <button {{action 'getQuestion'}}>Start Test</button>
+  {{/if}}
+</div>
