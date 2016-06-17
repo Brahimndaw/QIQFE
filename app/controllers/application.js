@@ -7,14 +7,15 @@ export default Ember.Controller.extend({
   actions: {
     submit(newAnswer){
 
-    var question = this.get('currentQ');
+      var question = this.get('currentQ');
 
-    var answer = {
-      content: newAnswer,
-      question_id: question.data.id
-    }
+      var answer = { attributes:
+        { content: newAnswer,
+        question_id: question.data.id }
+      }
 
-      question.data.relationships.answers.data.addObject(answer);
+      question.included.addObject(answer);
+      this.set('answers', question.included);
 
       const requestOptions = {
         url: "http://localhost:3000/api/v1/answers",
@@ -24,13 +25,11 @@ export default Ember.Controller.extend({
         dataType: 'json'
       };
 
-     $.ajax(requestOptions)
-
-      this.set('answers', question.data.relationships.answers.data);
-      this.set('isAnswering', false);
+      $.ajax(requestOptions).then((response) => {
+        this.set('isAnswering', false);
+      })
     },
     getQuestion(){
-
       const requestOptions = {
         url: "http://localhost:3000/api/v1/random",
         type: 'GET',
@@ -41,6 +40,7 @@ export default Ember.Controller.extend({
      $.ajax(requestOptions).then((response) => {
         var currentQ = response
         this.set('currentQ', currentQ);
+        this.set('isAnswering', true);
       })
     }
   }

@@ -6,7 +6,7 @@
   {{show-question-form submit=(action 'submit')}}
 {{else}}
   {{#each answers as |answer|}}
-    <p>{{answer.content}}</p>
+    <p>{{answer.attributes.content}}</p>
   {{/each}}
 {{/if}}
 
