@@ -1,36 +1,48 @@
 <div class="container">
-
   {{#if currentQ }}
     <div class="row">
-      <div class="col-lg-8 content-box">
+      <div class="col-lg-11 content-box">
         <h1 class="question">{{question}}</h1>
       </div>
-      <div class="col-lg-4">
+      <div class="col-lg-1">
         <div class="triangle-right" {{action 'getQuestion'}}>
         </div>
       </div>
     </div>
 
-    <div class="col-lg-6">
-      {{#if isAnswering}}
-          {{show-question-form submit=(action 'submit')}}
-      {{else}}
-        <div id="usersAnswer" class="content-box">
-          {{userAnswer}}
-        </div>
-      {{/if}}
+    <div class="row">
+      <div class="col-lg-5 userInput">
+        {{#if isAnswering}}
+            {{show-question-form submit=(action 'submit')}}
+        {{else}}
+          <div id="userAnswer" class="content-box">
+            {{userAnswer}}
+          </div>
+        {{/if}}
+      </div>
+
+        {{#unless isAnswering}}
+          <div class="col-lg-7 previousAnswers">
+          {{#each answers as |answer|}}
+            <div class="row">
+              <div class="col-lg-10 content-box previousAnswer">
+                <p>{{answer.content}}</p>
+                <p>{{answer.vote_count}}</p>
+                <p>{{answer.vote_score}}</p>
+              </div>
+              <div class="col-lg-1">
+                <div class="triangle-up" {{action "upVote" answer}}>
+                </div>
+                <div class="triangle-down">
+                </div>
+              </div>
+            </div>
+          {{/each}}
+          </div>
+        {{/unless}}
+
+      {{outlet}}
     </div>
-
-      {{#unless isAnswering}}
-        <div class="col-lg-6 content-box">
-        {{#each answers as |answer|}}
-          <p>{{answer.content}}</p>
-        {{/each}}
-        </div>
-      {{/unless}}
-
-    {{outlet}}
-
   {{else}}
     <button {{action 'getQuestion'}}>Start Test</button>
   {{/if}}
