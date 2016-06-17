@@ -1,9 +1,0 @@
-{{show-question question=model}}
-
-{{#if isAnswering}}
-  {{show-question-form submit=(action 'submit')}}
-{{else}}
-  {{show-answers answers=model.answers}}
-{{/if}}
-
-{{outlet}}

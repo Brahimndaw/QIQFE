@@ -1,0 +1,13 @@
+<button {{action 'getQuestion'}}>Get question</button>
+
+{{currentQ.data.attributes.content}}
+
+{{#if isAnswering}}
+  {{show-question-form submit=(action 'submit')}}
+{{else}}
+  {{#each answers as |answer|}}
+    <p>{{answer.content}}</p>
+  {{/each}}
+{{/if}}
+
+{{outlet}}
