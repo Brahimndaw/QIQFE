@@ -76,6 +76,7 @@ export default Ember.Controller.extend({
       },
       upVote(answer){
         this.store.findRecord('answer', answer.id).then(function(response){
+          debugger
           var newCount = 9
           response.set('vote_count', newCount)
           response.save()

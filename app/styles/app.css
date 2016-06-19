@@ -55,3 +55,7 @@
 .row{
   margin-bottom: 5%;
 }
+
+body {
+    background-image: url("../public/assets/images/ipad.png");
+}
