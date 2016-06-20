@@ -22,8 +22,14 @@ export default Ember.Controller.extend({
       answer.save();
     },
     downVote(answer) {
-      answer.incrementProperty('voteCount')
       answer.decrementProperty('voteScore')
+      answer.incrementProperty('voteCount')
+
+      if(parseInt(answer.get('voteScore')) < -3){
+          answer.set('approved', false)
+          answer.save()
+      }
+
       Ember.$('#up-'+answer.id).addClass('hidden')
       Ember.$('#down-'+answer.id).addClass('hidden')
 

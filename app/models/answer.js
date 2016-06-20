@@ -6,5 +6,6 @@ export default Model.extend({
   content: attr('string'),
   voteCount: attr('number'),
   voteScore: attr('number'),
-  question: belongsTo('question')
+  question: belongsTo('question'),
+  approved: attr('boolean')
 });
