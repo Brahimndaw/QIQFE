@@ -11,17 +11,30 @@ export default Ember.Controller.extend({
       this.set('userAnswer', answer)
       let arrayLength =  this.get('model').get('answers').content.length
       let modelFetch =  this.get('model').get('answers').content.slice(0, arrayLength -1)
-      this.set('answers', modelFetch)  
+      this.set('answers', modelFetch)
     },
     upVote(answer){
       answer.incrementProperty('voteCount')
       answer.incrementProperty('voteScore')
       answer.save();
-    }, 
+    },
     downVote(answer) {
       answer.incrementProperty('voteCount')
       answer.decrementProperty('voteScore')
       answer.save();
+    },
+    getQuestion(){
+      this.toggleProperty('isAnswering')
+
+      const requestOptions = {
+            url: "http://localhost:3000/api/v1/random",
+            type: 'GET',
+            contentType: 'application/json',
+            dataType: 'json'
+          };
+      $.ajax(requestOptions).then((response) => {
+        this.transitionToRoute('questions.question', response.id)
+      })
     }
   }
 })
