@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
       this.toggleProperty('isAnswering')
       this.set('userAnswer', answer)
       let arrayLength =  this.get('model').get('answers').content.length
-      let modelFetch =  this.get('model').get('answers').content.slice(0, arrayLength -1)
+      let modelFetch =  this.get('model').get('answers').content.slice(0, arrayLength -1).sortBy('voteCount').reverse()
       this.set('answers', modelFetch)
     },
     upVote(answer){
