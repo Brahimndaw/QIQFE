@@ -4,7 +4,6 @@
 
 textarea{
   border-color: gray;
-  border-radius: 10px;
   border-style: solid;
   border-width: 5px;
 }
@@ -67,6 +66,13 @@ textarea{
 
 body {
     background-image: url("../public/assets/images/ipad.png");
+}
+
+.drew-box{
+  background: rgba(0,0,0,0.5);
+  color: white;
+  padding: -10%;
+  height: 10%;
 }
 
 
