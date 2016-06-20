@@ -26,8 +26,11 @@
             <div class="row">
               <div class="col-lg-10 content-box previousAnswer">
                 <p>{{answer.content}}</p>
-                <p>{{answer.voteCount}}</p>
-                <p>{{answer.voteScore}}</p>
+                <div class="col-sm-4 drew-box">
+                <p>Votes: {{answer.voteCount}}
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Likes: {{answer.voteScore}}</p>
+                </div>
               </div>
               <div class="col-lg-1">
                 <div class="triangle-up" {{action "upVote" answer}}>
