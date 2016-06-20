@@ -1,0 +1,47 @@
+{{model}}
+
+<div class="container">
+    <div class="row">
+      <div class="col-lg-11 content-box">
+        <h1 class="question">{{model.content}}</h1>
+      </div>
+      <div class="col-lg-1">
+        <div class="triangle-right" {{action 'getQuestion'}}>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-5 userInput">
+        {{#if isAnswering}}
+            {{show-question-form submit=(action 'submit')}}
+        {{else}}
+          <div id="userAnswer" class="content-box">
+            {{userAnswer}}
+          </div>
+        {{/if}}
+      </div>
+
+        {{#unless isAnswering}}
+          <div class="col-lg-7 previousAnswers">
+          {{#each model.answers as |answer|}}
+            <div class="row">
+              <div class="col-lg-10 content-box previousAnswer">
+                <p>{{answer.content}}</p>
+                <p>{{answer.voteCount}}</p>
+                <p>{{answer.voteScore}}</p>
+              </div>
+              <div class="col-lg-1">
+                <div class="triangle-up" {{action "upVote" answer}}>
+                </div>
+                <div class="triangle-down">
+                </div>
+              </div>
+            </div>
+          {{/each}}
+          </div>
+        {{/unless}}
+
+      {{outlet}}
+    </div>
+</div>
