@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
       answer.save();
     },
     getQuestion(){
-      this.toggleProperty('isAnswering')
+      this.set('isAnswering', true)
 
       const requestOptions = {
             url: "http://localhost:3000/api/v1/random",
