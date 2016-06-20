@@ -17,14 +17,14 @@
             {{show-question-form submit=(action 'submit')}}
         {{else}}
           <div id="userAnswer" class="content-box">
-            {{userAnswer}}
+            {{userAnswer.content}}
           </div>
         {{/if}}
       </div>
 
         {{#unless isAnswering}}
           <div class="col-lg-7 previousAnswers">
-          {{#each model.answers as |answer|}}
+          {{#each answers as |answer|}}
             <div class="row">
               <div class="col-lg-10 content-box previousAnswer">
                 <p>{{answer.content}}</p>
@@ -34,7 +34,7 @@
               <div class="col-lg-1">
                 <div class="triangle-up" {{action "upVote" answer}}>
                 </div>
-                <div class="triangle-down">
+                <div class="triangle-down" {{action "downVote" answer}}>
                 </div>
               </div>
             </div>
