@@ -33,9 +33,11 @@
           {{#transition-group transition-class="container"}}
           <div class="col-lg-6 previousAnswers">
           {{#each answers as |answer|}}
+            {{#if answer.approved }}
             <div class="row">
               <div class="col-lg-10 content-box previousAnswer">
                 <p>{{answer.content}}</p>
+                <p>{{answer.approved}}</p>
                 <div class="col-sm-4 drew-box">
                   <p>Votes: {{answer.voteCount}}
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -50,6 +52,7 @@
                 </div>
               </div>
             </div>
+            {{/if}}
           {{/each}}
           </div>
           {{/transition-group}}
