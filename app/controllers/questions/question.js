@@ -16,11 +16,17 @@ export default Ember.Controller.extend({
     upVote(answer){
       answer.incrementProperty('voteCount')
       answer.incrementProperty('voteScore')
+      Ember.$('#up-'+answer.id).addClass('hidden')
+      Ember.$('#down-'+answer.id).addClass('hidden')
+
       answer.save();
     },
     downVote(answer) {
       answer.incrementProperty('voteCount')
       answer.decrementProperty('voteScore')
+      Ember.$('#up-'+answer.id).addClass('hidden')
+      Ember.$('#down-'+answer.id).addClass('hidden')
+
       answer.save();
     },
     getQuestion(){

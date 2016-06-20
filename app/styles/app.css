@@ -1,3 +1,42 @@
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+@import url(https://fonts.googleapis.com/css?family=Quicksand:300);
+
+.intro-message h1{
+  font-family: 'Poiret One', cursive;
+  font-size: 272px;
+}
+
+.intro-message h3{
+  font-family: 'Quicksand', sans-serif;
+  font-size: 48px;
+}
+
+.question-banner h1{
+  font-family: 'Poiret One', cursive;
+  font-size: 92px;
+}
+
+.question {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 48px;
+}
+
+.start-button {
+  width: 20%;
+  height: 40%;
+  font-family: 'Poiret One', cursive;
+  font-size: 48px;
+  border: 2px solid black;
+}
+
+.submit-button {
+  width: 45%;
+  height: 40%;
+  font-family: 'Poiret One', cursive;
+  font-size: 48px;
+  border: 2px solid black;
+}
+
 .userInput{
   padding-right:2%;
 }
@@ -6,10 +45,14 @@ textarea{
   border-color: gray;
   border-style: solid;
   border-width: 5px;
+  width: 100%;
+  min-height: 250px;
 }
 
 .previousAnswer{
-   border-radius: 20px;
+  border: 2px solid black;
+  background: transparent;
+  color: black;
 }
 
 .triangle-right {
@@ -44,12 +87,19 @@ textarea{
   background: green;
 }
 
+.question-box{
+  background:rgba(0,0,0,0.3);
+  border-radius: 20px;
+  color: black;
+}
+
 .content-box{
-  background: rgba(0,0,0,0.5);
-  color: white;
+  border: 2px solid black;
+  background:rgba(0,0,0,0.3);
+  font-size: 22px;
+  color: black;
   padding: 1.8%;
   height: 100%;
-  border-radius: 20px;
 }
 
 .container{
@@ -60,12 +110,20 @@ textarea{
   color: black;
 }
 
+.show{
+  display: inline;
+}
+
 .row{
   margin-bottom: 5%;
 }
 
 body {
     background-image: url("../public/assets/images/ipad.png");
+}
+
+.container-enter {
+  opacity: 0.01;
 }
 
 .drew-box{
@@ -75,5 +133,15 @@ body {
   height: 10%;
 }
 
+.container-enter.container-enter-active {
+  opacity: 1;
+  transition: opacity .3s ease-in;
+}
+.container-leave {
+  opacity: 1;
+}
 
-
+.container-leave.container-leave-active {
+  opacity: 0.01;
+  transition: opacity .2s ease-in;
+}
