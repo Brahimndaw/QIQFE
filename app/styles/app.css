@@ -2,6 +2,13 @@
   padding-right:2%;
 }
 
+textarea{
+  border-color: gray;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+}
+
 .previousAnswer{
 }
 
@@ -59,3 +66,8 @@
 body {
     background-image: url("../public/assets/images/ipad.png");
 }
+
+.intro-divider{
+   margin-bottom: -1%;
+}
+
