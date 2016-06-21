@@ -58,6 +58,8 @@ textarea{
 
 .question-stats{
   display: inline;
+  font-family: monospace;
+
 }
 
 .previousAnswer{
@@ -141,6 +143,8 @@ body {
   color: white;
   padding: -10%;
   height: 10%;
+  font-size: 14px;
+
 }
 
 .container-enter.container-enter-active {
