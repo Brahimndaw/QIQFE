@@ -4,7 +4,8 @@ export default Ember.Controller.extend({
   isAnswering: true,
   actions: {
     submit(newAnswer){
-      let answer = this.store.createRecord('answer', {content: newAnswer.replace(/\n/g,'<br>'), voteCount: 0, voteScore: 0})
+      let answer = this.store.createRecord('answer', {content: newAnswer.replace(/\n/g,'<br>'), voteCount: 0, voteScore: 0
+        approved: true })
 
       answer.set('question', this.get('model'))
       answer.save()
