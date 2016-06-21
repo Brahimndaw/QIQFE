@@ -4,5 +4,6 @@ import { hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   content: attr('string'),
-  answers: hasMany('answer')
+  answers: hasMany('answer'),
+  received_count: attr('number')
 });
