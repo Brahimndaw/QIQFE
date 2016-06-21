@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   isAnswering: true,
   actions: {
     submit(newAnswer){
-      let answer = this.store.createRecord('answer', {content: newAnswer.replace(/\n/g,'<br>'), voteCount: 0, voteScore: 0
+      let answer = this.store.createRecord('answer', {content: newAnswer.replace(/\n/g,'<br>'), voteCount: 0, voteScore: 0,
         approved: true })
 
       answer.set('question', this.get('model'))
@@ -44,8 +44,8 @@ export default Ember.Controller.extend({
       this.set('isAnswering', true)
 
       const requestOptions = {
-            url: "https://question-iq.herokuapp.com/api/v1/random",
-            //url: "http://localhost:3000/api/v1/random",
+            //url: "https://question-iq.herokuapp.com/api/v1/random",
+            url: "http://localhost:3000/api/v1/random",
             type: 'GET',
             contentType: 'application/json',
             dataType: 'json'
