@@ -1,6 +1,6 @@
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
-import { belongsTo } from 'ember-data/relationships';
+import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   content: attr('string'),
@@ -8,5 +8,5 @@ export default Model.extend({
   voteScore: attr('number'),
   question: belongsTo('question'),
   approved: attr('boolean'),
-  comments: hasMany('comments')
+  comments: hasMany('comment')
 });
