@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   isAnswering: true,
+  commentShow: false,
   actions: {
     submit(newAnswer){
       let answer = this.store.createRecord('answer', {content: newAnswer.replace(/\n/g,'<br>'), voteCount: 0, voteScore: 0,
@@ -17,6 +18,14 @@ export default Ember.Controller.extend({
       let modelFetch =  this.get('model').get('answers').content.slice(0, arrayLength -1).sortBy('voteCount').reverse()
 
       this.set('answers', modelFetch)
+    },
+    submitComment(newComment, answer){
+      let comment = this.store.createRecord('comment', {content: newComment.replace(/\n/g,'<br>'), voteCount: 0, voteScore: 0 })
+      comment.set('answer', answer)
+      comment.save()
+
+      Ember.$(".comment-form textarea").val('');
+
     },
     upVote(answer){
       answer.incrementProperty('voteCount')
@@ -45,7 +54,7 @@ export default Ember.Controller.extend({
 
       const requestOptions = {
             url: "https://question-iq.herokuapp.com/api/v1/random",
-            // url: "http://localhost:3000/api/v1/random",
+            //url: "http://localhost:3000/api/v1/random",
             type: 'GET',
             contentType: 'application/json',
             dataType: 'json'
@@ -57,6 +66,9 @@ export default Ember.Controller.extend({
     incrementReceivedCount(){
       this.get('model').incrementProperty('received_count');
       this.get('model').save();
+    },
+    showComments(){
+      this.toggleProperty('commentShow')
     }
   }
 })

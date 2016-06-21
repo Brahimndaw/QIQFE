@@ -42,8 +42,30 @@
           {{#each answers as |answer|}}
             {{#if answer.approved }}
             <div class="row">
+              <div class="col-sm-4 drew-box">
+                 <p>Votes: {{answer.voteCount}}
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   Likes: {{answer.voteScore}}</p>
+               </div>
+
               <div class="col-lg-10 content-box previousAnswer">
-                {{{answer.content}}}
+                <p>{{{answer.content}}}</p>
+
+                <a {{action 'showComments'}}>Show Feedback</a>
+
+                {{#if commentShow }}
+                  {{#each answer.comments as |comment|}}
+                    <div class="comment">
+                      {{comment.content}}
+                    </div>
+                  {{/each}}
+
+                  <form class="comment-form">
+                    {{textarea value=newComment cols="9" rows="2"}}<br>
+                    <button class="btn btn-default submit-button" {{action 'submitComment' newComment answer}}>Comment</button>
+                  </form>
+
+                {{/if}}
               </div>
 
               <div class="col-lg-1">
@@ -51,14 +73,7 @@
                 </div>
                 <div class="triangle-down" id="down-{{answer.id}}" {{action "downVote" answer}}>
                 </div>
-
               </div>
-               <div class="col-sm-4 drew-box">
-                  <p>Votes: {{answer.voteCount}}
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    Likes: {{answer.voteScore}}</p>
-                </div>
-
             </div>
             {{/if}}
           {{/each}}
