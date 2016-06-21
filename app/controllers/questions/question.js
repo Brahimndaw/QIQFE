@@ -39,7 +39,7 @@ export default Ember.Controller.extend({
       this.set('isAnswering', true)
 
       const requestOptions = {
-            url: "http://localhost:3000/api/v1/random",
+            url: "https://question-iq.herokuapp.com/api/v1/random",
             type: 'GET',
             contentType: 'application/json',
             dataType: 'json'
