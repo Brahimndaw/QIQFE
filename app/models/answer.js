@@ -7,5 +7,6 @@ export default Model.extend({
   voteCount: attr('number'),
   voteScore: attr('number'),
   question: belongsTo('question'),
-  approved: attr('boolean')
+  approved: attr('boolean'),
+  comments: hasMany('comments')
 });
